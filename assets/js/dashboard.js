@@ -12,8 +12,8 @@ $(function () {
 
     chart: {
       type: "bar",
-      height: 345,
-      offsetX: -15,
+      height: 200,
+      offsetX: 15,
       toolbar: { show: true },
       foreColor: "#adb0bb",
       fontFamily: 'inherit',
@@ -27,7 +27,7 @@ $(function () {
     plotOptions: {
       bar: {
         horizontal: false,
-        columnWidth: "35%",
+        columnWidth: "70%",
         borderRadius: [6],
         borderRadiusApplication: 'end',
         borderRadiusWhenStacked: 'all'

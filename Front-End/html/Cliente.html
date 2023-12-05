@@ -24,13 +24,14 @@
   }
 
   /* Estilos para o contêiner dos botões e do calendário */
-  .button-container {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin-top: 200px;
-    flex-direction: column;
-  }
+.button-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  text-align: center; /* Alinha o texto ao centro */
+  height: 100vh; /* Altura total da tela */
+}
 
   /* Estilos para o calendário */
   #calendario-body {
@@ -172,13 +173,13 @@
           <div>
             <button class="custom-button" onclick="iniciarChat()">Iniciar Bate-Papo com Tradutor</button>
             <button class="custom-button" onclick="toggleCalendario()">Agendar Horário</button>
+            <div id="calendario-body">
+              <div id="calendario" onclick="event.stopPropagation()"></div>
+              <div class="calendario-botoes">
+                <button class="custom-button" onclick="confirmarAgendamento()">Confirmar Agendamento</button>
+                <button class="custom-button" onclick="cancelarAgendamento()">Cancelar</button>
+              </div>
           </div>
-          <div id="calendario-body">
-            <div id="calendario" onclick="event.stopPropagation()"></div>
-            <div class="calendario-botoes">
-              <button class="custom-button" onclick="confirmarAgendamento()">Confirmar Agendamento</button>
-              <button class="custom-button" onclick="cancelarAgendamento()">Cancelar</button>
-            </div>
           </div>
         </div>
       </div>
@@ -224,7 +225,8 @@
 
     function iniciarChat() {
 
-      alert("Bate-papo com o tradutor iniciado!");
+      window.location.href = './videoChamada.html';
+;
     }
 
     function confirmarAgendamento() {

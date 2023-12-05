@@ -1,99 +1,156 @@
 <!doctype html>
 <html lang="en">
 
+<style>
+  /* Estilos para os botões */
+  .custom-button {
+    padding: 8px 15px;
+    border: none;
+    background-color: #007bff;
+    color: #fff;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    font-family: Montserrat-Bold;
+    font-size: 14px;
+    line-height: 1.7;
+    text-transform: uppercase;
+    margin: 0 5px;
+    /* Adicionando margens horizontais entre os botões */
+  }
+
+  .custom-button:hover {
+    background-color: #0056b3;
+  }
+
+  /* Estilos para o contêiner dos botões e do calendário */
+  .button-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 20px;
+    position: relative;
+    flex-direction: column;
+  }
+
+  /* Estilos para o calendário */
+  #calendario-body {
+    /* Define a posição absoluta */
+    display: none;
+    
+  }
+
+  /* Estilos para mostrar o calendário */
+  #calendario-body.open {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+  }
+
+  /* Estilos para os botões de confirmação e cancelamento */
+  .calendario-botoes {
+    display: flex;
+    justify-content: center;
+    margin-top: 10px;
+  }
+
+</style>
+
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>LibrasVivas</title>
   <link rel="shortcut icon" type="image/png" href="../assets/images/logos/favicon.png" />
   <link rel="stylesheet" href="../assets/css/styles.min.css" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+
 </head>
 
 <body>
   <!--  Body Wrapper -->
   <!--  Invólucro do Corpo -->
-<div class="page-wrapper" id="main-wrapper" data-layout="vertical" data-navbarbg="skin6" data-sidebartype="full"
-data-sidebar-position="fixed" data-header-position="fixed">
-<!-- Início da Barra Lateral -->
-<aside class="left-sidebar">
-  <!-- Rolagem da Barra Lateral-->
-  <div>
-    <div class="brand-logo d-flex align-items-center justify-content-between">
-      <a href="./index.html" class="text-nowrap logo-img">
-        <img src="../assets/images/logos/dark-logo.svg" width="180" alt="" />
-      </a>
-      <div class="close-btn d-xl-none d-block sidebartoggler cursor-pointer" id="sidebarCollapse">
-        <i class="ti ti-x fs-8"></i>
-      </div>
-    </div>
-    <!-- Navegação da Barra Lateral-->
-    <nav class="sidebar-nav scroll-sidebar" data-simplebar="">
-      <ul id="sidebarnav">
-        <li class="nav-small-cap">
-          <i class="ti ti-dots nav-small-cap-icon fs-4"></i>
-          <span class="hide-menu">Início</span>
-        </li>
-        <li class="sidebar-item">
-          <a class="sidebar-link" href="./index.html" aria-expanded="false">
-            <span>
-              <i class="ti ti-layout-dashboard"></i>
-            </span>
-            <span class="hide-menu">Painel</span>
+  <div class="page-wrapper" id="main-wrapper" data-layout="vertical" data-navbarbg="skin6" data-sidebartype="full"
+    data-sidebar-position="fixed" data-header-position="fixed">
+    <!-- Início da Barra Lateral -->
+    <aside class="left-sidebar">
+      <!-- Rolagem da Barra Lateral-->
+      <div>
+        <div class="brand-logo d-flex align-items-center justify-content-between">
+          <a href="./index.html" class="text-nowrap logo-img">
+            <img src="../assets/images/logos/dark-logo.svg" width="180" alt="" />
           </a>
-          <a class="sidebar-link" href="./ml" aria-expanded="false">
-            <span>
-              <i class="ti ti-layout-dashboard"></i>
-            </span>
-            <span class="hide-menu">Video chamada</span>
-          </a>
-        </li>
-        <li class="nav-small-cap">
-          <i class="ti ti-dots nav-small-cap-icon fs-4"></i>
-          <span class="hide-menu">COMPONENTES DE INTERFACE</span>
-        </li>
-        <li class="sidebar-item">
-          <a class="sidebar-link" href="./ui-buttons.html" aria-expanded="false">
-            <span>
-              <i class="ti ti-article"></i>
-            </span>
-            <span class="hide-menu">Botões</span>
-          </a>
-        </li>
-        <li class="sidebar-item">
-          <a class="sidebar-link" href="./ui-alerts.html" aria-expanded="false">
-            <span>
-              <i class="ti ti-alert-circle"></i>
-            </span>
-            <span class="hide-menu">Alertas</span>
-          </a>
-        </li>
-        <li class="sidebar-item">
-          <a class="sidebar-link" href="./ui-card.html" aria-expanded="false">
-            <span>
-              <i class="ti ti-cards"></i>
-            </span>
-            <span class="hide-menu">Cartão</span>
-          </a>
-        </li>
-        <li class="sidebar-item">
-          <a class="sidebar-link" href="./ui-forms.html" aria-expanded="false">
-            <span>
-              <i class="ti ti-file-description"></i>
-            </span>
-            <span class="hide-menu">Formulários</span>
-          </a>
-        </li>
-        <li class="sidebar-item">
-          <a class="sidebar-link" href="./ui-typography.html" aria-expanded="false">
-            <span>
-              <i class="ti ti-typography"></i>
-            </span>
-            <span class="hide-menu">Tipografia</span>
-          </a>
-        </li>
-        
+          <div class="close-btn d-xl-none d-block sidebartoggler cursor-pointer" id="sidebarCollapse">
+            <i class="ti ti-x fs-8"></i>
+          </div>
+        </div>
+        <!-- Navegação da Barra Lateral-->
+        <nav class="sidebar-nav scroll-sidebar" data-simplebar="">
+          <ul id="sidebarnav">
+            <li class="nav-small-cap">
+              <i class="ti ti-dots nav-small-cap-icon fs-4"></i>
+              <span class="hide-menu">Início</span>
+            </li>
+            <li class="sidebar-item">
+              <a class="sidebar-link" href="./index.html" aria-expanded="false">
+                <span>
+                  <i class="ti ti-layout-dashboard"></i>
+                </span>
+                <span class="hide-menu">Painel</span>
+              </a>
+              <a class="sidebar-link" href="./ml" aria-expanded="false">
+                <span>
+                  <i class="ti ti-layout-dashboard"></i>
+                </span>
+                <span class="hide-menu">Video chamada</span>
+              </a>
+            </li>
+            <li class="nav-small-cap">
+              <i class="ti ti-dots nav-small-cap-icon fs-4"></i>
+              <span class="hide-menu">COMPONENTES DE INTERFACE</span>
+            </li>
+            <li class="sidebar-item">
+              <a class="sidebar-link" href="./ui-buttons.html" aria-expanded="false">
+                <span>
+                  <i class="ti ti-article"></i>
+                </span>
+                <span class="hide-menu">Botões</span>
+              </a>
+            </li>
+            <li class="sidebar-item">
+              <a class="sidebar-link" href="./ui-alerts.html" aria-expanded="false">
+                <span>
+                  <i class="ti ti-alert-circle"></i>
+                </span>
+                <span class="hide-menu">Alertas</span>
+              </a>
+            </li>
+            <li class="sidebar-item">
+              <a class="sidebar-link" href="./ui-card.html" aria-expanded="false">
+                <span>
+                  <i class="ti ti-cards"></i>
+                </span>
+                <span class="hide-menu">Cartão</span>
+              </a>
+            </li>
+            <li class="sidebar-item">
+              <a class="sidebar-link" href="./ui-forms.html" aria-expanded="false">
+                <span>
+                  <i class="ti ti-file-description"></i>
+                </span>
+                <span class="hide-menu">Formulários</span>
+              </a>
+            </li>
+            <li class="sidebar-item">
+              <a class="sidebar-link" href="./ui-typography.html" aria-expanded="false">
+                <span>
+                  <i class="ti ti-typography"></i>
+                </span>
+                <span class="hide-menu">Tipografia</span>
+              </a>
+            </li>
+
           </ul>
-          
+
         </nav>
         <!-- End Sidebar navigation -->
       </div>
@@ -145,26 +202,85 @@ data-sidebar-position="fixed" data-header-position="fixed">
               </li>
             </ul>
           </div>
-          
+
         </nav>
       </header>
       <!--  Header End -->
+
       <div class="container-fluid">
         <!--  Row 1 -->
-        <div class="row">
-          
+        <div class="row flex">
+          <div class="button-container">
+            <div>
+              <button class="custom-button" onclick="iniciarChat()">Iniciar Bate-Papo com Tradutor</button>
+              <button class="custom-button" onclick="toggleCalendario()">Agendar Horário</button>
+            </div>
+            <div id="calendario-body">
+              <div id="calendario" onclick="event.stopPropagation()"></div>
+              <div class="calendario-botoes">
+                <button class="custom-button" onclick="confirmarAgendamento()">Confirmar Agendamento</button>
+                <button class="custom-button" onclick="cancelarAgendamento()">Cancelar</button>
+              </div>
+            </div>
+          </div>
         </div>
-
       </div>
     </div>
-  </div>
-  <script src="../assets/libs/jquery/dist/jquery.min.js"></script>
-  <script src="../assets/libs/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
-  <script src="../assets/js/sidebarmenu.js"></script>
-  <script src="../assets/js/app.min.js"></script>
-  <script src="../assets/libs/apexcharts/dist/apexcharts.min.js"></script>
-  <script src="../assets/libs/simplebar/dist/simplebar.js"></script>
-  <script src="../assets/js/dashboard.js"></script>
+    <script src="../assets/libs/jquery/dist/jquery.min.js"></script>
+    <script src="../assets/libs/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="../assets/js/sidebarmenu.js"></script>
+    <script src="../assets/js/app.min.js"></script>
+    <script src="../assets/libs/apexcharts/dist/apexcharts.min.js"></script>
+    <script src="../assets/libs/simplebar/dist/simplebar.js"></script>
+    <script src="../assets/js/dashboard.js"></script>
 </body>
+
+<script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+<script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+<script>
+  var calendarioAberto = false;
+  var calendarioInstance = null;
+
+  function toggleCalendario() {
+    calendarioAberto = !calendarioAberto;
+    var calendario = document.getElementById('calendario-body');
+
+    if (calendarioAberto) {
+      calendario.classList.add('open');
+      if (!calendarioInstance) {
+        calendarioInstance = flatpickr("#calendario", {
+          enableTime: true, // Habilita seleção de horário
+          dateFormat: "Y-m-d H:i", // Formato de data e hora
+          minTime: "08:00", // Horário mínimo disponível
+          maxTime: "18:00", // Horário máximo disponível
+          minDate: "today", // Apenas datas a partir de hoje são selecionáveis
+          defaultDate: "today", // Data inicial
+          position: "auto", // Posicionamento automático
+          inline: true // Mostra o calendário diretamente na página
+        });
+      }
+    } else {
+      calendario.classList.remove('open');
+    }
+  }
+
+  function iniciarChat() {
+    // Adicione aqui o código para iniciar o bate-papo com o tradutor
+    alert("Bate-papo com o tradutor iniciado!");
+    // Código adicional para iniciar o chat
+  }
+
+  function confirmarAgendamento() {
+    alert("Agendamento confirmado!");
+    // Adicione aqui o código para confirmar o agendamento
+  }
+
+  function cancelarAgendamento() {
+    calendarioAberto = false;
+    var calendario = document.getElementById('calendario');
+    calendario.classList.remove('open');
+    // Adicione aqui o código para cancelar o agendamento
+  }
+</script>
 
 </html>
